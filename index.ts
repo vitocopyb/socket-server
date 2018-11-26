@@ -3,7 +3,7 @@ import router from './routes/router';
 import bodyPaser from 'body-parser';
 import cors from 'cors';
 
-const server = new Server();
+const server = Server.instance;
 
 // configuracion del body-parser
 server.app.use(bodyPaser.urlencoded({ extended: true }));
