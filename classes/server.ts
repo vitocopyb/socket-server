@@ -33,8 +33,12 @@ export default class Server {
 
         // escucha cuando se conecta un cliente
         this.io.on('connection', cliente => {
-            console.log('cliente conectado');
+            // conectar cliente
+            socket.conectarCliente(cliente);
 
+            // escucha el evento configurar usuario
+            socket.configurarUsuario(cliente, this.io);
+            
             // escucha el evento mensaje
             socket.mensaje(cliente, this.io);
 
