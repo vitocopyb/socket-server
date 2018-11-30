@@ -34,16 +34,19 @@ export default class Server {
         // escucha cuando se conecta un cliente
         this.io.on('connection', cliente => {
             // conectar cliente
-            socket.conectarCliente(cliente);
+            socket.conectarCliente(cliente, this.io);
 
             // escucha el evento configurar usuario
             socket.configurarUsuario(cliente, this.io);
             
+            // obtener usuarios activos
+            socket.obtenerUsuarios(cliente, this.io);
+
             // escucha el evento mensaje
             socket.mensaje(cliente, this.io);
 
             // escucha el evento desconectar
-            socket.desconectar(cliente);
+            socket.desconectar(cliente, this.io);
         });
     }
 
